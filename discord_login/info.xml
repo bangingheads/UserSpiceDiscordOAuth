@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-  <name>Twitch Login Plugin</name>
+  <name>Discord Login Plugin</name>
   <author>BangingHeads</author>
 <!-- Feel free to include your github repo here -->
-  <website>https://www.github.com/bangingheads/UserSpiceTwitchOAuth</website>
+  <website>https://www.github.com/bangingheads/UserSpiceDiscordOAuth</website>
 
 <!-- the version of the plugin iteself -->
   <version>1.0.0</version>
@@ -15,8 +15,8 @@
   <tested>5.0.9</tested>
 
 <!-- What does your plugin do? -->
-  <description>This plugin allows you to login via Twitch OAuth.</description>
+  <description>This plugin allows you to login via Discord OAuth.</description>
 
   <!-- This is the launch button in the plugin manager. If it is blank or missing, Configure Plugin will show up. -->
-    <button>Configure Twitch</button>
+    <button>Configure Discord</button>
 </plugin>
