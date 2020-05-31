@@ -6,7 +6,7 @@ Userspice can be downloaded from their [website](https://userspice.com/) or on [
 
 ## Setting Up
 
-1. Copy the plugin files into /usersc/plugins/
+1. Copy the discord_login plugin folder into /usersc/plugins/
 2. Open UserSpice Admin Panel and install plugin.
 3. Generate Client ID and Client Secret from Discord
 4. Configure plugin with Client Information
