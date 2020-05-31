@@ -32,23 +32,24 @@ try {
     'code' => Input::get('code')
 ]);
     $resourceOwner = $provider->getResourceOwner($accessToken);
-    $discuser = $resourceOwner->toArray();
-    die(var_dump($discuser));
-    $discUsername = $discuser['data'][0]['username'];
-    $discDiscriminator = $discuser['data'][0]['discriminator'];
-    $discId = $discuser['data'][0]['id'];
+    $oauthUser = $resourceOwner->toArray();
+    $discUsername = $oauthUser['data'][0]['username'];
+    $discDiscriminator = $oauthUser['data'][0]['discriminator'];
+    $discId = $oauthUser['data'][0]['id'];
 } catch (Exception $e) {
     unset($_SESSION['oauth2state']);
     exit($e->getMessage());
 }
 
-if ($discuser['data'][0]['verified']) {
-    $discEmail = $discuser['data'][0]['email'];
+if ($oauthUser['data'][0]['verified']) {
+    $discEmail = $oauthUser['data'][0]['email'];
     $checkExistingQ = $db->query("SELECT * FROM users WHERE email = ?", array($discEmail));
     $CEQCount = $checkExistingQ->count();
+    $verified = 1;
 } else {
     $discEmail = ""; //User does not have a verified discord email address
     $CEQCount = 0;
+    $verified = 0;
 }
 
 //Existing UserSpice User Found
@@ -57,7 +58,7 @@ if ($CEQCount>0) {
     $newLoginCount = $checkExisting->logins+1;
     $newLastLogin = date("Y-m-d H:i:s");
 
-    $fields=array('tw_uid'=>$twId, 'tw_uname'=>$twUsername, 'logins'=>$newLoginCount, 'last_login'=>$newLastLogin);
+    $fields=array('disc_uid'=>$discId, 'disc_uname'=>$discUsername, 'disc_discriminator'=>$discDiscriminator, 'logins'=>$newLoginCount, 'last_login'=>$newLastLogin);
 
     $db->update('users', $checkExisting->id, $fields);
     $sessionName = Config::get('session/session_name');
@@ -85,7 +86,7 @@ if ($CEQCount>0) {
       'ip' => $ip,
     ));
     }
-
+    include($abs_us_root.$us_url_root.'usersc/includes/oauth_success_redirect.php');
     Redirect::to($whereNext);
 } else {
     if ($settings->registration==0) {
@@ -96,20 +97,14 @@ if ($CEQCount>0) {
         // //No Existing UserSpice User Found
         $date = date("Y-m-d H:i:s");
 
-        $preQCount = $db->query("SELECT username FROM users WHERE username = ?", array($twUsername))->count();
+        $preQCount = $db->query("SELECT username FROM users WHERE username = ?", array($discUsername))->count();
         if ($preQCount == 0) {
-            $username = $twUsername;
+            $username = $discUsername;
         } else {
-            for ($i=0;$i<999;$i++) {
-                $preQCount = $db->query("SELECT username FROM users WHERE username = ?", array($twUsername.$i))->count();
-                if ($preQCount == 0) {
-                    $username = $twUsername.$i;
-                    break;
-                }
-            }
+            $username = $discUsername.$discDiscriminator;
         }
     
-        $fields=array('email'=>$twEmail,'username'=>$username,'permissions'=>1,'logins'=>1,'company'=>'none','join_date'=>$date,'last_login'=>$date,'email_verified'=>1,'password'=>null,'tw_uid'=>$twId,'tw_uname'=>$twUsername);
+        $fields=array('email'=>$discEmail, 'username'=>$username, 'fname'=>$discUsername, 'lname'=>$discDiscriminator, 'permissions'=>1,'logins'=>1,'company'=>'none','join_date'=>$date,'last_login'=>$date,'email_verified'=>$verified,'password'=>null,'disc_uid'=>$discId,'disc_uname'=>$discUsername,'disc_discriminator'=>$discDiscriminator);
 
         $db->insert('users', $fields);
         $lastID = $db->lastId();
@@ -121,6 +116,7 @@ if ($CEQCount>0) {
 
         $sessionName = Config::get('session/session_name');
         Session::put($sessionName, $lastID);
+        include($abs_us_root.$us_url_root.'usersc/includes/oauth_success_redirect.php');
         Redirect::to($whereNext);
     }
 }

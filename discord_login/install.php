@@ -12,11 +12,13 @@ if (in_array($user->data()->id, $master_account)) {
         err($plugin_name.' has already been installed!');
     } else {
         $db->query("ALTER TABLE settings ADD disclogin BOOLEAN");
-        $db->query("ALTER TABLE settings ADD disclientid varchar(255)");
+        $db->query("ALTER TABLE settings ADD discclientid varchar(255)");
         $db->query("ALTER TABLE settings ADD discclientsecret varchar(255)");
         $db->query("ALTER TABLE settings ADD disccallback varchar(255)");
         $db->query("ALTER TABLE users ADD disc_uid varchar(255)");
         $db->query("ALTER TABLE users ADD disc_uname varchar(255)");
+        $db->query("ALTER TABLE users ADD disc_discriminator varchar(255)");
+
     
         $full_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $path = explode("users/", $full_url);

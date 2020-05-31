@@ -10,7 +10,6 @@ if (!empty($_POST['plugin_discord_login'])) {
     if (!Token::check($token)) {
         include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
     }
-    // Redirect::to('admin.php?err=I+agree!!!');
 }
 $token = Token::generate();
 ?>

@@ -48,5 +48,19 @@ $loginUrl = $provider->getAuthorizationUrl($options);
 $_SESSION['oauth2state'] = $provider->getState();
 
 ?>
-<a href="<?=htmlspecialchars($loginUrl)?>">
-  <img class="img-responsive" align=right src="<?=$us_url_root?>usersc/plugins/discord_login/assets/discord.png" alt=""/></a>
+        <style>
+          .discord a {
+            background: #7289DA;
+            padding: 0 20px;
+            line-height: 35px;
+            color: #fff;
+            font-family: 'Helvetica', 'Arial', sans-sefir;
+            font-size: 20px;
+            display: block;
+            text-decoration: none;
+            border-radius: 105px;
+          }
+        </style>
+<div class="discord">
+<a href="<?=htmlspecialchars($loginUrl)?>"><img src="<?=$us_url_root?>usersc/plugins/discord_login/assets/discord.png" width="40" height="40"></img>Login With Discord</a>
+</div>
