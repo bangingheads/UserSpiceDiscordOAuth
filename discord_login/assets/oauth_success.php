@@ -33,16 +33,16 @@ try {
 ]);
     $resourceOwner = $provider->getResourceOwner($accessToken);
     $oauthUser = $resourceOwner->toArray();
-    $discUsername = $oauthUser['data'][0]['username'];
-    $discDiscriminator = $oauthUser['data'][0]['discriminator'];
-    $discId = $oauthUser['data'][0]['id'];
+    $discUsername = $oauthUser['username'];
+    $discDiscriminator = $oauthUser['discriminator'];
+    $discId = $oauthUser['id'];
 } catch (Exception $e) {
     unset($_SESSION['oauth2state']);
     exit($e->getMessage());
 }
 
-if ($oauthUser['data'][0]['verified']) {
-    $discEmail = $oauthUser['data'][0]['email'];
+if ($oauthUser['verified']) {
+    $discEmail = $oauthUser['email'];
     $checkExistingQ = $db->query("SELECT * FROM users WHERE email = ?", array($discEmail));
     $CEQCount = $checkExistingQ->count();
     $verified = 1;

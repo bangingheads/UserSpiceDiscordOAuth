@@ -25,11 +25,11 @@ Make sure to press Save Changes when completed.
 
 ## Plugin Configuration
 
-Setting up the plugin is simple using the information from Twitch.
+Setting up the plugin is simple using the information from Discord.
 
-Discord Client ID: Your Twitch Application's Client ID
+Discord Client ID: Your Discord Application's Client ID
 
-Discord Client Secret: Your Twitch Application's Client Secret
+Discord Client Secret: Your Discord Application's Client Secret
 
 Discord Callback URL (Full URL Path): This is automatically generated on install. If this is wrong it should be replaced by `YOUR_URL/usersc/plugins/discord_login/assets/oauth_success.php` replacing `YOUR_URL` with the location of your UserSpice install.
 
@@ -38,3 +38,17 @@ Redirect After Discord Login (Full URL Path): Enter the full path of the URL whe
 Any issues? Feel free to open an issue on Github or make a Pull Request.
 
 Need help? Add me on Discord: BangingHeads#0001.
+
+## Integration
+
+Once you have logged into discord OAuth the user information will be added to users data.
+
+You will have access to the following (With an example of my account BangingHeads#0001):
+
+disc_id: Their Discord ID (173649211282292736)
+
+disc_uname: Their Discord Username (BangingHeads)
+
+disc_discriminator: (0001)
+
+You can access them through the \$user variable. For example `$user->data()->disc_uname`

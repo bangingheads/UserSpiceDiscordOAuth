@@ -57,6 +57,7 @@ $_SESSION['oauth2state'] = $provider->getState();
             font-family: 'Helvetica', 'Arial', sans-sefir;
             font-size: 20px;
             display: block;
+			width: 250px;
             text-decoration: none;
             border-radius: 105px;
           }
