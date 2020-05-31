@@ -35,10 +35,6 @@ Discord Callback URL (Full URL Path): This is automatically generated on install
 
 Redirect After Discord Login (Full URL Path): Enter the full path of the URL where you would like users to be redirected after logging in.
 
-Any issues? Feel free to open an issue on Github or make a Pull Request.
-
-Need help? Add me on Discord: BangingHeads#0001.
-
 ## Integration
 
 Once you have logged into discord OAuth the user information will be added to users data.
@@ -52,3 +48,13 @@ disc_uname: The Discord Username (BangingHeads)
 disc_discriminator: The Discord Discriminator, the part after the hash tag. (0001)
 
 You can access them through the \$user variable. For example `$user->data()->disc_uname`
+
+Need to run custom code after login or signup? Use the `usersc/includes/oauth_success_redirect.php` This file is included before the redirect and any code will be ran.
+
+## Questions
+
+Any issues? Feel free to open an issue on Github or make a Pull Request.
+
+Need help? Add me on Discord: BangingHeads#0001.
+
+Any help with UserSpice can be asked in their [Discord](https://discord.gg/j25FeHu)
