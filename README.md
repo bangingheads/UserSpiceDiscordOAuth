@@ -45,10 +45,10 @@ Once you have logged into discord OAuth the user information will be added to us
 
 You will have access to the following (With an example of my account BangingHeads#0001):
 
-disc_id: Their Discord ID (173649211282292736)
+disc_id: The Discord ID (173649211282292736)
 
-disc_uname: Their Discord Username (BangingHeads)
+disc_uname: The Discord Username (BangingHeads)
 
-disc_discriminator: (0001)
+disc_discriminator: The Discord Discriminator, the part after the hash tag. (0001)
 
 You can access them through the \$user variable. For example `$user->data()->disc_uname`
