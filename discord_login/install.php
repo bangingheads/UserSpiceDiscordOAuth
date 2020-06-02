@@ -15,6 +15,8 @@ if (in_array($user->data()->id, $master_account)) {
         $db->query("ALTER TABLE settings ADD discclientid varchar(255)");
         $db->query("ALTER TABLE settings ADD discclientsecret varchar(255)");
         $db->query("ALTER TABLE settings ADD disccallback varchar(255)");
+		$db->query("ALTER TABLE settings ADD discserverreq BOOLEAN");
+		$db->query("ALTER TABLE settings ADD discserverid varchar(255)");
         $db->query("ALTER TABLE users ADD disc_uid varchar(255)");
         $db->query("ALTER TABLE users ADD disc_uname varchar(255)");
         $db->query("ALTER TABLE users ADD disc_discriminator varchar(255)");
@@ -24,7 +26,7 @@ if (in_array($user->data()->id, $master_account)) {
         $path = explode("users/", $full_url);
         $url_path = $path[0] . "usersc/plugins/discord_login/assets/oauth_success.php";
     
-        $db->update('settings', 1, ["disccallback"=>$url_path,"disclogin"=>0]);
+        $db->update('settings', 1, ["disccallback"=>$url_path,"disclogin"=>0,"discserverreq"=>0]);
     
         $fields = array(
      'plugin'=>$plugin_name,

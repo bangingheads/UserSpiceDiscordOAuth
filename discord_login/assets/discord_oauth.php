@@ -27,7 +27,7 @@ $settingsQ=$db->query("SELECT * FROM settings");
 $settings=$settingsQ->first();
 
 $clientId=$settings->discclientid;
-$secret=$settings->disclientsecret;
+$secret=$settings->discclientsecret;
 $callback=$settings->disccallback;
 
 if (!isset($_SESSION)) {
@@ -40,9 +40,15 @@ $provider = new \Wohali\OAuth2\Client\Provider\Discord([
   'clientSecret' => $secret,
   'redirectUri' => $callback
 ]);
+if($settings->discserverreq) {
+$options = [
+  'scope' => ['identify', 'email', 'guilds']
+];
+} else {
 $options = [
   'scope' => ['identify', 'email']
 ];
+}
 
 $loginUrl = $provider->getAuthorizationUrl($options);
 $_SESSION['oauth2state'] = $provider->getState();

@@ -16,12 +16,15 @@ $callback=$settings->disccallback;
 $whereNext=$settings->finalredir;
 
 require __DIR__ . '/vendor/autoload.php';
+use RestCord\DiscordClient;
 
 $provider = new \Wohali\OAuth2\Client\Provider\Discord([
   'clientId' => $clientId,
   'clientSecret' => $secret,
   'redirectUri' => $callback
 ]);
+
+
 
 if (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
     unset($_SESSION['oauth2state']);
@@ -40,7 +43,17 @@ try {
     unset($_SESSION['oauth2state']);
     exit($e->getMessage());
 }
-
+if($settings->discserverreq) {
+	$discord = new DiscordClient(['token' => $accessToken->getToken(), 'tokenType' => 'OAuth']); // Token is required
+	$guilds = $discord->user->getCurrentUserGuilds();
+	$inGuilds = array();
+	foreach($guilds as $guild) {
+		array_push($inGuilds, $guild->id);
+	}
+	if (!in_array($settings->discserverid, $inGuilds)) {
+		Redirect::To($us_url_root.'users/login.php');
+	}
+}
 if ($oauthUser['verified']) {
     $discEmail = $oauthUser['email'];
     $checkExistingQ = $db->query("SELECT * FROM users WHERE email = ?", array($discEmail));

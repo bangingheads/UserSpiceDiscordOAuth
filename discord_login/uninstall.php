@@ -11,7 +11,6 @@ include "plugin_info.php";
 //you will probably be doing more than removing the item from the db
 
 $db->query("DELETE FROM us_plugins WHERE plugin = ?",array($plugin_name));
-$db->query("UPDATE settings SET disclogin = 0");
 deRegisterHooks($plugin_name);
 if(!$db->error()) {
     err($plugin_name.' uninstalled');
