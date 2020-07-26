@@ -77,13 +77,8 @@ if ($CEQCount>0) {
     $sessionName = Config::get('session/session_name');
     Session::put($sessionName, $checkExisting->id);
 
-    $twoQ = $db->query("select twoKey from users where id = ? and twoEnabled = 1", [$checkExisting->id]);
-    if ($twoQ->count()>0) {
-        $_SESSION['twofa']=1;
-        $page=encodeURIComponent(Input::get('redirect'));
-        logger($user->data()->id, "Two FA", "Two FA being requested.");
-        Redirect::To($us_url_root.'users/twofa.php');
-    }
+    $hooks = getMyHooks(['page'=>'loginSuccess']);
+    includeHook($hooks,'body');
     $ip = ipCheck();
     $q = $db->query("SELECT id FROM us_ip_list WHERE ip = ?", array($ip));
     $c = $q->count();
