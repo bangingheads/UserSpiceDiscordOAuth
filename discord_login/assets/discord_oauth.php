@@ -51,7 +51,7 @@ $options = [
 }
 
 $loginUrl = $provider->getAuthorizationUrl($options);
-$_SESSION['oauth2state'] = $provider->getState();
+$_SESSION['discordstate'] = $provider->getState();
 
 ?>
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/plugins/discord_login/assets/container.css">

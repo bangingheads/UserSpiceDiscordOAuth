@@ -26,8 +26,8 @@ $provider = new \Wohali\OAuth2\Client\Provider\Discord([
 
 
 
-if (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
-    unset($_SESSION['oauth2state']);
+if (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['discordstate'])) {
+    unset($_SESSION['discordstate']);
     exit('Invalid state');
 }
 try {
@@ -40,7 +40,7 @@ try {
     $discDiscriminator = $oauthUser['discriminator'];
     $discId = $oauthUser['id'];
 } catch (Exception $e) {
-    unset($_SESSION['oauth2state']);
+    unset($_SESSION['discordstate']);
     exit($e->getMessage());
 }
 if($settings->discserverreq) {
