@@ -6,13 +6,13 @@
   <website>https://www.github.com/bangingheads/UserSpiceDiscordOAuth</website>
 
 <!-- the version of the plugin iteself -->
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 
 <!-- release date of THIS version -->
-  <release>May 31, 2020</release>
+  <release>October 10, 2020</release>
 
 <!-- the last version of UserSpice you tested the plugin with -->
-  <tested>5.1.4</tested>
+  <tested>5.1.6</tested>
 
 <!-- What does your plugin do? -->
   <description>This plugin allows you to login via Discord OAuth.</description>
