@@ -112,7 +112,7 @@ if ($CEQCount>0) {
             $username = $discUsername.$discDiscriminator;
         }
     
-        $fields=array('email'=>$discEmail, 'username'=>$username, 'fname'=>$discUsername, 'lname'=>$discDiscriminator, 'permissions'=>1,'logins'=>1,'company'=>'none','join_date'=>$date,'last_login'=>$date,'email_verified'=>$verified,'password'=>null,'disc_uid'=>$discId,'disc_uname'=>$discUsername,'disc_discriminator'=>$discDiscriminator);
+        $fields=array('email'=>$discEmail, 'username'=>$username, 'fname'=>$discUsername, 'lname'=>$discDiscriminator, 'permissions'=>1,'logins'=>1,'join_date'=>$date,'last_login'=>$date,'email_verified'=>$verified,'password'=>null,'disc_uid'=>$discId,'disc_uname'=>$discUsername,'disc_discriminator'=>$discDiscriminator);
 
         $db->insert('users', $fields);
         $lastID = $db->lastId();
