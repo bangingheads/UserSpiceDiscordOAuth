@@ -50,11 +50,6 @@ $options = [
 ];
 }
 
-$loginUrl = $provider->getAuthorizationUrl($options);
+$link = $provider->getAuthorizationUrl($options);
 $_SESSION['discordstate'] = $provider->getState();
-
 ?>
-<link rel="stylesheet" href="<?=$us_url_root?>usersc/plugins/discord_login/assets/container.css">
-<div class="discord">
-<a href="<?=htmlspecialchars($loginUrl)?>"><img src="<?=$us_url_root?>usersc/plugins/discord_login/assets/discord.png" width="40" height="40"></img>Login With Discord</a>
-</div>

@@ -45,8 +45,6 @@ disc_id: The Discord ID (173649211282292736)
 
 disc_uname: The Discord Username (BangingHeads)
 
-disc_discriminator: The Discord Discriminator, the part after the hash tag. (0001)
-
 You can access them through the \$user variable. For example `$user->data()->disc_uname`
 
 Need to run custom code after login or signup? Use the `usersc/includes/oauth_success_redirect.php` This file is included before the redirect and any code will be ran.
@@ -55,6 +53,6 @@ Need to run custom code after login or signup? Use the `usersc/includes/oauth_su
 
 Any issues? Feel free to open an issue on Github or make a Pull Request.
 
-Need help? Add me on Discord: BangingHeads#0001.
+Need help? Add me on Discord: BangingHeads.
 
 Any help with UserSpice can be asked in their [Discord](https://discord.gg/j25FeHu)

@@ -49,23 +49,20 @@ $token = Token::generate();
             <input type="text" class="form-control ajxtxt" data-desc="Discord Callback URL" name="disccallback" id="disccallback" value="<?=$settings->disccallback?>">
           </div>
 
-  		<div class="form-group">
-            <label for="finalredir">Redirect After Discord Login (Final Redirect)</label>
-            <input type="text" class="form-control ajxtxt" data-desc="Final Redirect" name="finalredir" id="finalredir" value="<?=$settings->finalredir?>">
-          </div>
-<div class="form-group">
-  <label for="discserverreq">Require To Be In Specific Server</label>
-  <span style="float:right;">
-    <label class="switch switch-text switch-success">
+
+          <div class="form-group">
+          <label for="discserverreq">Require To Be In Specific Server</label>
+          <span style="float:right;">
+            <label class="switch switch-text switch-success">
                 <input id="discserverreq" type="checkbox" class="switch-input toggle" data-desc="Discord Login" <?php if ($settings->discserverreq==1) {
-    echo 'checked="true"';
-} ?>>
+                  echo 'checked="true"';
+                } ?>>
                 <span data-on="Yes" data-off="No" class="switch-label"></span>
                 <span class="switch-handle"></span>
               </label>
             </span>
           </div>
-  		<div class="form-group">
+  		    <div class="form-group">
             <label for="finalredir">Required Server ID</label>
             <input type="text" class="form-control ajxtxt" data-desc="Discord Server ID" name="discserverid" id="discserverid" value="<?=$settings->discserverid?>">
           </div>
