@@ -39,7 +39,7 @@ Redirect After Discord Login (Full URL Path): Enter the full path of the URL whe
 
 Once you have logged into discord OAuth the user information will be added to users data.
 
-You will have access to the following (With an example of my account BangingHeads#0001):
+You will have access to the following (With an example of my account BangingHeads):
 
 disc_id: The Discord ID (173649211282292736)
 
