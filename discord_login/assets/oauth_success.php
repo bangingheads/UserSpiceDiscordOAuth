@@ -63,4 +63,4 @@ $fields = [
 ];
 if (!empty($discEmail)) $fields["email"] = $discEmail;
 
-socialLogin($discEmail, $discUsername, ["disc_uid"=>$discId], $fields);
+socialLogin($discEmail, $discUsername, ["disc_uid"=>$discId], $fields, ', "discord");
