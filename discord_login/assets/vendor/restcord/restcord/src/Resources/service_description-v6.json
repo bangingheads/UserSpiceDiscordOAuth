@@ -80,6 +80,12 @@
                         "type": "snowflake",
                         "location": "uri",
                         "required": true
+                    },
+                    "with_counts": {
+                        "location": "query",
+                        "type": "boolean",
+                        "description": "when true, will return approximate member and presence counts for the guild",
+                        "default": false
                     }
                 },
                 "parametersArray": false
@@ -3203,6 +3209,11 @@
                         "location": "json",
                         "type": "ISO8601 timestamp",
                         "description": "when the user joined the guild"
+                    },
+                    "premium_since?": {
+                        "location": "json",
+                        "type": "ISO8601 timestamp",
+                        "description": "when the user started boosting the guild"
                     },
                     "deaf": {
                         "location": "json",
